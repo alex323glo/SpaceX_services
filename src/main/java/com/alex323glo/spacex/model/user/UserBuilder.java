@@ -13,7 +13,7 @@ public class UserBuilder {
 
     private User target;
 
-    private UserBuilder() {
+    public UserBuilder() {
         target = new User();
     }
 

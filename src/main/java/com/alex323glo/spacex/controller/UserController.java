@@ -1,11 +1,11 @@
-package controller;
+package com.alex323glo.spacex.controller;
 
-import exception.EmailDuplicationException;
-import exception.ArgumentValidationException;
-import exception.AccessRestrictionException;
-import exception.EmailNotExistsException;
-import exception.TokenNotExistsException;
-import model.UserInfo;
+import com.alex323glo.spacex.exception.EmailDuplicationException;
+import com.alex323glo.spacex.exception.ArgumentValidationException;
+import com.alex323glo.spacex.exception.AccessRestrictionException;
+import com.alex323glo.spacex.exception.EmailNotExistsException;
+import com.alex323glo.spacex.exception.TokenNotExistsException;
+import com.alex323glo.spacex.model.user.UserInfo;
 
 /**
  * Business logic of User actor.

@@ -1,12 +1,16 @@
-package exception;
+package com.alex323glo.spacex.exception;
 
 /**
  * Exception. which is thrown, when system tries to access DB using some DAO.
  * Caused if DAO can't carry out some needed operations with DB.
+ *
+ * @author alex323glo
+ * @version 1.0.0
+ * @see AppException
  */
 public class DAOException extends AppException {
     /**
-     * Constructs a new exception with the specified detail message.  The
+     * Constructs a new com.alex323glo.spacex.exception with the specified detail message.  The
      * cause is not initialized, and may subsequently be initialized by
      * a call to {@link #initCause}.
      *
