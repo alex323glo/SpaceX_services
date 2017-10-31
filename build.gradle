@@ -41,7 +41,19 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
 }
 
-task stage {
-    dependsOn test
-    dependsOn installDist
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.alex323glo.spacex.Run'
+    }
+}
+
+task startServer(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.alex323glo.spacex.Run"
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = "build/classes/main"
+    }
 }
