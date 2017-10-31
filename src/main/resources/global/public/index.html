@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>main page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script src="js/script-paper.js"></script>
+    <script src="js/script-slider.js"></script>
+    <script src="js/script-load-ajax.js"></script>
+    <script src="js/switch-paper-story.js"></script>
+</head>
+<body>
+    <div id="page">
+        <div id="header">
+            <div id="enter">
+                <a href="" id="login">Войти</a>
+                <a href="">Регистрация</a>
+            </div>
+            <div id="logo">
+                <a href="index.html">
+                <p class="logo">Space exploration technologies.</p>
+                <p class="logo" id="hiden">We help you discover hidden secrets of space!</p>
+                </a>
+            </div>
+        </div>
+        <div id="navigation">
+            <div id="menu">
+                <div id="first">
+                    <a class="menu" href="#"><p>Пункт 1</p></a>
+                </div>
+                <ul>
+                    <li><a class="menu" href="#"><p>Пункт 2</p></a></li>
+                    <li><a class="menu" href="#"><p>Пункт 3</p></a></li>
+                    <li><a class="menu" href="#"><p>Пункт 4</p></a></li>
+                    <li><a class="menu" href="#"><p>Пункт 5</p></a></li>
+                    <li><a class="menu" href="#"><p>Пункт 6</p></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <div id="roof">
+                <div class="paper">
+                    <div id="triangle-invisible"></div>
+                    <div id="hidden-square">
+                        <p>Next story...</p>
+                    </div>
+
+                    <div id="triangle-visible" onclick="clickTriangleVisible()"></div>
+                    <div id="story-text">
+
+                        <h1>(STORY-TEXT)</h1>
+                        <!-- Here should be loaded AJAX: -->
+                        <script>
+                            loadAjax('story-text', 'content/roof/story-text-1.html');
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+            <div id="aside">
+                <div class="wrapper">
+                    <h5 id="header-1">
+                        Header 1
+                        <script>loadAjax('header-1', 'content/aside/header-1.html')</script>
+                    </h5>
+                    <article id="article-1">
+                        Some text in article 1.
+                        <script>loadAjax('article-1', 'content/aside/article-1.html')</script>
+                    </article>
+                    <h5>Header 2</h5>
+                    <article>Article2: something interesting about it.</article>
+                    <h5> Header 3</h5>
+                    <article>Did you know about this article?</article>
+                    <h5> Header 3</h5>
+                    <article>Did you know about this article?</article><h5> Header 3</h5>
+                    <article>Did you know about this article?</article>
+                    <h5> Header 3</h5>
+                    <article>Did you know about this article?</article>
+                    <h5> Header 3</h5>
+                    <article>Did you know about this article?</article>
+                </div>
+            </div>
+            <div id="main">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="copyrights">
+                <p>@Copyrights: some copyrights...</p>
+                <br>
+                <p>Site was made by Olexiy Orlyuk.</p>
+                <br>
+                <p>(Some additional information & contacts)</p>
+            </div>
+        </div>
+        <div id="fixed">
+            <a href="#" ></a>
+        </div>
+    </div>
+    <div id="registration-page">
+            <div id="form-head">
+
+            </div>
+            <div id="form-input">
+
+            </div>
+        </div>
+</body>
+</html>

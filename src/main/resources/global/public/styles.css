@@ -1,0 +1,815 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+    border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/************************/
+/******* My Code: *******/
+/************************/
+
+@import url("fonts/Jura-Regular.ttf");
+
+body {
+/*    background-image: url(images/backgrounds/space.jpg);*/
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+    background-color: rgb(0, 12, 29);
+    background-size: 1708px 1138px;
+}
+
+h2 {
+    font-family: "Times New Roman", serif;
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgba(240, 248, 255, 0.9);
+}
+
+h4 {
+    font-family: "Times New Roman", serif;
+    font-size: 36px;
+    font-weight: normal;
+    text-transform: none;
+    color: rgba(240, 248, 255, 0.8);
+}
+
+p {
+    font-family: "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: rgba(240, 248, 255, 0.7);
+}
+
+a {
+    text-decoration: none;
+}
+
+#page {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+
+
+/*--- HEADER: ---*/
+#header {
+    display: block;
+    position: relative;
+    height: 270px;
+    width: 1190px;
+    
+    margin: 5px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 196, 255, 0.05);
+    border-radius: 10px;
+}
+
+#enter {
+    display: block;
+    position: absolute;
+    width: 150px;
+    height: 20px;
+    top: -25px;
+    right: 5px;
+}
+
+#enter a {
+    color: rgba(240, 248, 255, 0.7);
+    padding: 2px;
+    border: 2px rgba(0, 196, 255, 0.5) solid;
+    border-radius: 5px;
+}
+
+#enter a:hover {
+    text-decoration: underline;
+    color: rgba(240, 248, 255, 1);
+}
+
+#logo {
+    display: block;
+    position: relative;
+    width: 1190px;
+    height: 270px;
+    
+}
+
+#logo a {
+    display: block;
+    position: absolute;
+    background-image: url(images/SpaceX-Logo3.png);
+    background-size: 1200px 275px;
+    height: 270px;
+    width: 1190px;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+
+#logo a:hover {
+    opacity: 0.95;
+}
+
+p.logo {
+    display: block;
+    position: absolute;
+    top: 170px;
+    bottom: 70px;
+    left: 300px;
+    color: rgba(240, 248, 255, 0.7);
+}
+
+p.logo#hiden {
+    display: none;
+    top: 230px;
+    left: 350px;
+    font-size: 16px;
+    font-family: cursive;
+    font-style: italic;
+}
+
+#logo a:hover p{
+    display: block;
+    color: rgba(240, 248, 255, 1);
+    display: block;
+}
+/*--- header. ---*/
+
+
+
+/*--- NAVIGATION: ---*/
+#navigation {
+    display: block;
+    position: relative;
+    float: left;
+    height: 600px;
+    width: 170px;
+    padding: 20px;
+    
+    margin: 3px;
+    border: 2px rgba(0, 196, 255, 0.1) solid;   
+    background-color: rgba(0, 196, 255, 0.05);
+    border-radius: 15px;
+}
+
+#navigation:hover {
+    border-color: rgba(0, 196, 255, 0.5);
+    background-color: rgba(0, 196, 255, 0.1)
+}
+
+#menu {
+    display: block;
+    position: absolute;
+    height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#menu #first {
+    height: 15%;
+}
+
+#menu #first a {
+    display: block;
+    position: relative;
+    width: 170px;
+    height: 100%;
+    background-color: rgba(0, 55, 100, 0.7);
+    border-radius: 10px;
+}
+
+#menu #first a:hover {
+    background-color: rgba(0, 55, 100, 1);
+}
+
+#menu #first:hover p {
+    color: rgba(240, 248, 255, 1);
+}
+
+#menu ul {
+    height: 80%;
+}
+
+#menu li {
+    display: block;
+    position: relative;
+    width: 170px;
+    height: 19%;
+    margin-top: 10px;
+    background-color: rgba(0, 55, 100, 0.7);
+    border-radius: 10px;
+}
+
+#menu li:hover {
+    background-color: rgba(0, 55, 100, 1);
+}
+
+#menu li:hover p {
+    color: rgba(240, 248, 255, 1);
+}
+
+a.menu {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+a.menu p {
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-size: 28px;
+}
+/*--- navigation. ---*/
+
+
+
+
+
+
+/*--- CONTENT ---*/
+#content {
+    display: block;
+    position: relative;
+    float: left;
+    height: 1020px;
+    width: 950px;
+    padding: 10px;
+    
+    margin: 3px;
+    border: 2px rgba(0, 196, 255, 0.1) solid;   background-color: rgb(0, 23, 42);    /* !!! */
+    
+    border-radius: 15px;
+}
+
+#content:hover {
+    border-color: rgba(0, 196, 255, 0.5);
+    background-color: rgb(0, 28, 51);    /* !!! */
+}
+
+#content:hover #triangle-invisible {
+    border-left: 40px solid rgb(0, 28, 51);
+}
+
+#roof {
+    display: block;
+    position: relative;
+    float: left;
+    width: 940px;
+    height: 300px;
+    padding: 3px;
+    margin-bottom: 5px;
+    border: 2px rgba(0, 196, 255, 0.05) solid;
+}
+
+.paper {
+    display: block;
+    position: absolute;
+    padding: 5px;
+    padding-left: 55px;
+    padding-top: 55px;
+    width: 880px;
+    height: 240px;
+    background-color: rgb(121, 70, 0);
+}
+
+.paper #triangle-visible {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 40px solid rgb(121, 70, 0);
+    border-top: 40px solid transparent;
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.paper #hidden-square {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.paper #hidden-square p {
+    display: block;
+    position: absolute;
+    font-size: 18px;
+    transform: rotate(-45deg);
+    left: 10px;
+}
+
+.paper #triangle-invisible {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 40px solid rgb(0, 23, 42);
+    border-bottom: 40px solid transparent;
+}
+
+.paper a:last-child {
+    display: block;
+    position: absolute;
+    margin-top: 10px;
+    color: rgb(255, 98, 0);
+}
+
+.paper a:last-child:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+#aside {
+    display: block;
+    position: relative;
+    float: left;
+    width: 360px;  /*Important!*/
+    height: 640px; /*Important!*/
+    padding: 23px;
+    margin-top: 5px;
+    margin-right: 5px;
+    border: 2px rgba(0, 196, 255, 0.05) solid;
+}
+
+#aside h5 {
+    width: 360px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: rgb(0, 98, 178);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Times New Roman", serif;
+    font-size: 24px;
+    line-height: 44px;
+    color: rgb(206, 206, 206);
+}
+
+#aside h5:hover {
+    background-color: rgb(0, 129, 234);
+}
+
+#aside article {
+    width: 350px;
+    height: 140px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: rgb(206, 206, 206);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    color: rgb(0, 98, 178);
+    /*...*/
+}
+
+#aside article:last-child {
+    margin-bottom: 0;
+}
+
+#main {
+    display: block;
+    position: relative;
+    float: left;
+    width: 510px;
+    height: 680px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border: 2px rgba(0, 196, 255, 0.05) solid;
+}
+
+#main table {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    opacity: 0.3;
+}
+
+#main table:hover {
+    opacity: 1;
+}
+
+#main table tr {
+    display: table-row;
+    height: 40px;
+}
+
+#main table tr td {
+    display: table-cell;
+    width: 40px;
+    border: 3px rgb(0, 137, 255) ridge;
+}
+
+#main table tr:nth-child(4n + 1) td:nth-child(4n + 1) {
+    background-color: red;
+}
+
+#main table tr:nth-child(4n + 2) td:nth-child(4n + 2) {
+    background-color: red;
+}
+
+#main table tr:nth-child(4n + 3) td:nth-child(4n + 3) {
+    background-color: red;
+}
+
+#main table tr:nth-child(4n + 4) td:nth-child(4n + 4) {
+    background-color: red;
+}
+/*--- content. ---*/
+
+
+
+
+
+
+/*--- FOOTER: ---*/
+#footer {
+    display: block;
+    position: relative;
+    float: left;
+    height: 120px;
+    width: 1170px;
+    
+    margin: 3px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px rgba(0, 196, 255, 0.1) solid;   background-color: rgba(0, 196, 255, 0.05);
+    border-radius: 15px;
+}
+
+#footer:hover {
+    border-color: rgba(0, 196, 255, 0.5);
+    background-color: rgba(0, 196, 255, 0.1)
+}
+
+#copyrights {
+    height: 116px;
+    border: 2px rgba(0, 196, 255, 0.05) solid;
+}
+/*--- footer. ---
+
+
+
+
+
+
+/*--- FIXED: ---*/
+#fixed {
+    display: block;
+    position: fixed;
+    width: 96px;
+    height: 96px;
+    bottom: 10px;
+    right: 10px;
+}
+
+#fixed a {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/Facebook-96.png);
+    background-size: 100% 100%;
+    border: 2px rgb(0, 226, 255) solid;
+    border-radius: 10px;
+    opacity: 0.1;
+    
+}
+
+#fixed a:hover {
+    opacity: 1;
+}
+/*--- fixed. ---*/
+
+
+/*--- REGISTRATION: ---*/
+#registration-page {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 13, 49, 1);
+}
+
+#form-head {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 30%;
+}
+#form-input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 70%;
+}
+/*--- registration. ---*/
+
+
+
+/**********************/
+/******* MEDIA: *******/
+/**********************/
+
+@media (max-width: 700px) {
+    body {
+        display: block;
+        width: 100%;
+    }
+    
+    
+    #page {
+        display: block;
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    
+    #header {
+        display: flex;
+        position: relative;
+        width: 90%;
+        
+        margin: 5%;
+        padding: 0;
+        margin-top: 45px
+    }
+    #enter {
+        width: 190px;
+        top: -30px;
+    }
+    #enter a {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    #logo {
+        display: flex;
+        width: 100%;
+        
+        margin: 0;
+        padding: 0;
+    }
+    #logo a {
+        display: flex;
+        width: 100%;
+        background-size: 100% 100%;
+        border-radius: 10px;
+        
+        margin: 0;
+        padding: 0;
+    }
+    #logo p {
+        left: 20%;
+    }
+    
+    #logo p#hiden {
+        display: block;
+        height: 20px;
+        left: 15%;
+    }
+    
+    
+    #navigation {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 150px;
+        
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        border-width: 0px;
+    }
+    #menu {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        
+        margin: 0;
+        padding: 0;
+    }
+    #menu #first {
+        display: block;
+        float: left;
+        height: 100%;
+        width: 15%;
+    }
+    
+    #menu #first a {
+        width: 80px;
+        height: 100%;
+        background-color: rgba(0, 116, 211, 0.7);
+        
+        margin: 0;
+        padding: 0;
+    }
+    #menu #first a:hover {
+        background-color: rgba(0, 116, 211, 1);
+    }
+    #menu ul {
+        display: block;
+        float: left;
+        width: 85%;
+        height: 100%;
+    }
+    #menu ul li {
+        display: block;
+        float: left;
+        height: 100%;
+        width: 19%;;
+        
+        margin: 0;
+        padding: 0;
+        margin-left: 1%;
+    }
+    
+    #menu ul li {
+        background-color: rgba(0, 55, 100, 0.7);
+    }
+    
+    #menu ul li a p {
+        display: block;
+        position: relative;
+        width: 100px;
+        height: 20%;
+        line-height: 350%;
+        top: 50px;
+        transform: rotate(90deg);
+        
+        margin: 0;
+        padding: 0;
+    }
+    
+    #menu #first p {
+        transform: rotate(90deg);
+        left: 5px;
+        width: 100px;
+        height: 20%;
+        line-height: 350%;
+        
+        top: 50px;
+    }
+    
+    
+    #content {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        border-width: 0px;
+    }
+    #content #roof {
+        width: 94%;
+        height: 400px;
+        
+        margin: 2%;
+        border-width: 1%;
+        padding: 0;
+    }
+    .paper {
+        width: 85%;
+        height: 310px;
+        padding-top: 85px;
+        padding-left: 5%;
+        padding-right: 10%;
+        overflow: hidden;
+    }
+    #content #aside {
+        width: 94%;
+/*        height: 200px;*/
+        height: 600px;
+        
+        margin: 2%;
+        padding: 0;
+        border-width: 2%;
+    }
+    #content .wrapper {
+        display: block;
+        position: absolute;
+        width: 80%;
+        left: 10%;
+        height: 96%;
+        top: 2%;
+    }
+    #content .wrapper h5 {
+        width: 100%;
+    }
+    #content .wrapper article{
+        width: 96%;
+        padding: 2%;
+    }
+    #content #main {
+        width: 94%;
+        height: 600px;
+        
+        margin: 2%;
+        padding: 0;
+        border-width: 2%;
+    }
+    #main table {
+        top: 10%;
+        left: 10%;
+        height: 400px;
+        width: 80%;
+    }
+    
+    
+    
+    #footer {
+        display: block;
+        width: 100%;
+        height: 200px;
+        
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    #copyrights {
+        position: relative;
+        width: 90%;
+        height: 90%;
+        left: 5%;
+        top: 5%;
+    }
+    
+    
+    
+    #fixed {
+        width: 64px;
+        height: 64px;
+    }
+    #fixed a {
+        opacity: 0.5;
+    }
+}
