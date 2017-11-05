@@ -54,15 +54,18 @@ public class ConfigHolder {
     /**
      * Static accessor to singleton.
      *
-     * @return instance of ConfigHolder.
-     * @throws IOException when can't construct instance
-     * (some problems with properties field).
+     * @return instance of ConfigHolder or null, if has
+     * some problems with reading configuration file.
      *
      * @see IOException
      * */
-    public static ConfigHolder getInstance() throws IOException {
+    public static ConfigHolder getInstance() {
         if (thisConfigHolder == null) {
-            thisConfigHolder = new ConfigHolder();
+            try {
+                thisConfigHolder = new ConfigHolder();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return thisConfigHolder;
