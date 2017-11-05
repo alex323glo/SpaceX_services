@@ -30,6 +30,9 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
+    // https://mvnrepository.com/artifact/org.mockito/mockito-all
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+
     // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.3.v20170317'
 
