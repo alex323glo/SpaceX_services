@@ -1,5 +1,6 @@
 package com.alex323glo.spacex.model.user;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,6 +15,13 @@ public class User {
     private Map<UserInfoType, UserInfo> userInfoMap;
 
     public User() {
+        userInfoMap = new HashMap<>();
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+        userInfoMap = new HashMap<>();
     }
 
     public String getEmail() {
