@@ -1,0 +1,9 @@
+
+com.alex323glo.spacex
+com.alex323glo.spacex.config
+com.alex323glo.spacex.controller
+com.alex323glo.spacex.dao
+com.alex323glo.spacex.exception
+com.alex323glo.spacex.model.user
+com.alex323glo.spacex.rest
+com.alex323glo.spacex.util
