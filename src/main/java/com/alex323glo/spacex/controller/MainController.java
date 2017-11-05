@@ -16,18 +16,17 @@ public interface MainController {
      * Writes user data to system's DB.
      *
      * @param user user's data which will be written to system's DB.
+     * @return true if operation was successful and false - if it wasn't.
      *
      * @throws ArgumentValidationException when argument doesn't pass validation.
      * @throws DaoRecordOverrideException when argument's id is already in use in DB.
-     * @throws DAOException when Dao can't write new user data to DB.
      *
      * @see User
      * @see ArgumentValidationException
      * @see DaoRecordOverrideException
-     * @see DAOException
      * */
-    void addUser(User user)
-            throws ArgumentValidationException, DaoRecordOverrideException, DAOException;
+    boolean addUser(User user)
+            throws ArgumentValidationException, DaoRecordOverrideException;
 
     /**
      * Generates access token by entered user's data.
@@ -37,15 +36,13 @@ public interface MainController {
      *
      * @throws ArgumentValidationException when argument doesn't pass validation.
      * @throws DaoRecordNotFoundException when DB doesn't contain such user.
-     * @throws DAOException when Dao can't read user data from DB by entered key.
      *
      * @see User
      * @see ArgumentValidationException
      * @see DaoRecordNotFoundException
-     * @see DAOException
      * */
     String verifyUserAccess(User user)
-            throws ArgumentValidationException, DaoRecordNotFoundException, DAOException;
+            throws ArgumentValidationException, DaoRecordNotFoundException;
 
     /**
      * Finds target identifier (User email) of Access Token.
@@ -55,14 +52,12 @@ public interface MainController {
      *
      * @throws ArgumentValidationException when argument doesn't pass validation.
      * @throws DaoRecordNotFoundException when DB doesn't contain such Access Token.
-     * @throws DAOException when Dao can't read record from DB.
      *
      * @see ArgumentValidationException
      * @see DaoRecordNotFoundException
-     * @see DAOException
      * */
     String getAccessTokenTarget(String accessToken)
-            throws ArgumentValidationException, DaoRecordNotFoundException, DAOException;
+            throws ArgumentValidationException, DaoRecordNotFoundException;
 
     /**
      * Destroys entered access token in DB.
@@ -71,14 +66,12 @@ public interface MainController {
      *
      * @throws ArgumentValidationException when argument doesn't pass validation.
      * @throws DaoRecordNotFoundException when DB doesn't contain such accessToken record.
-     * @throws DAOException when Dao can't read record from DB.
      *
      * @see ArgumentValidationException
      * @see DaoRecordNotFoundException
-     * @see DAOException
      * */
     void restrictUserAccess(String accessToken)
-            throws ArgumentValidationException, DaoRecordNotFoundException, DAOException;
+            throws ArgumentValidationException, DaoRecordNotFoundException;
 
     /**
      * Creates a byte array of needed public file from system's resources.
