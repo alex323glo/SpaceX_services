@@ -26,89 +26,61 @@ public interface Dao<Model> {
      * Creates a record in system's DB.
      *
      * @param data data which will be written to DB.
-     * @return true if operation was successful.
-     *
-     * @throws DaoRecordOverrideException when DB contains record with equal key.
-     * @throws DAOException when system can't carry out
-     * this operation with DB.
+     * @return true, if operation was successful, and false, if it wasn't.
      *
      * @see Model
-     * @see DaoRecordOverrideException
-     * @see DAOException
      * */
-    boolean create(Model data) throws DaoRecordOverrideException, DAOException;
+    boolean create(Model data);
 
     /**
      * Reads record from system's DB.
      *
      * @param id identifier of needed record in system's DB.
-     * @return data from needed record.
-     *
-     * @throws DaoRecordNotFoundException when DB doesn't contain record with such id.
-     * @throws DAOException when system can't carry out
-     * this operation with DB.
+     * @return data from needed record or null, if DB doesn't contain record with such id.
      *
      * @see Model
-     * @see DAOException
      * */
-    Model read(String id) throws DaoRecordNotFoundException, DAOException;
+    Model read(String id);
 
     /**
      * Updates record in system's DB.
+     * If record with entered id isn't stored in DB, it creates new record with entered id and data.
      *
      * @param id identifier of needed record in system's DB.
      * @param newData new data, which will replace existing data
      *                of needed record.
-     * @return old data from updated record.
-     *
-     * @throws DaoRecordNotFoundException when DB doesn't contain record with such id.
-     * @throws DAOException when system can't carry out
-     * this operation with DB.
+     * @return old data from updated record or null, if if DB doesn't contain record with such id.
      *
      * @see Model
-     * @see DAOException
      * */
-    Model update(String id, Model newData) throws DaoRecordNotFoundException, DAOException;
+    Model update(String id, Model newData);
 
     /**
      * Removes record from system's DB.
      *
      * @param id identifier of needed record in system's DB.
-     * @return data from removed record.
-     *
-     * @throws DaoRecordNotFoundException when DB doesn't contain record with such id.
-     * @throws DAOException when system can't carry out
-     * this operation with DB.
+     * @return data from removed record or null, if if DB doesn't contain record with such id.
      *
      * @see Model
-     * @see DAOException
      * */
-    Model delete(String id) throws DaoRecordNotFoundException, DAOException;
+    Model delete(String id);
 
     /**
      * Gives Set of all keys of table from system's DB.
      *
      * @return key Set of current DB table.
      *
-     * @throws DAOException when system can't carry out
-     * this operation with DB.
-     *
-     * @see DAOException
+     * @see Set
      * */
-    Set<String> allKeys() throws DAOException;
+    Set<String> allKeys();
 
     /**
-     * Gives list of records with equal values.
+     * Gives List of all records of table from system's DB.
      *
-     * @param value record, which value must be equal to values
-     *              of all records in result record List.
-     * @return result list of records.
+     * @return value List of current DB table.
      *
-     * @throws DAOException when system can't carry out
-     * this operation with DB.
-     *
+     * @see Model
      * @see List
-     * @see DAOException
      * */
-    List<Model> equalValues(Model value) throws DAOException;
+    List<Model> allRecords();
 }
