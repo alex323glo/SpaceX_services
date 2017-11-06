@@ -29,6 +29,12 @@ public class PathUtil {
             case "html":
                 return "text/html;charset=UTF-8";
 
+            // For "img", "png" and "jpg" files:
+            case "img":
+            case "png":
+            case "jpg":
+                return "image/png";
+
             // For other files:
             default:
                 return "text/html";

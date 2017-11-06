@@ -7,6 +7,7 @@ import com.alex323glo.spacex.model.user.AccessToken;
 import com.alex323glo.spacex.model.user.User;
 import com.alex323glo.spacex.util.FileUtil;
 import com.alex323glo.spacex.util.Generator;
+import com.alex323glo.spacex.util.PathUtil;
 import com.alex323glo.spacex.util.Validator;
 
 import java.io.IOException;
@@ -213,13 +214,31 @@ public class MainControllerImpl implements MainController {
         String publicFilePathRoot = ConfigHolder.getInstance().getProperty("app.global.public");
 
         try {
-            String result = FileUtil.readTextFile(publicFilePathRoot + fileName);
-            if (result == null) {
-                throw new LoadFileException("public file \"" + fileName + "\" doesn't exist");
+            // Checks file type:
+            String fileType = PathUtil.getFileContentType(fileName);
+            if (fileType.equals("text/html") || fileType.equals("text/html;charset=UTF-8")
+                    || fileType.equals("text/css") || fileType.equals("script")) {
+
+                String result = FileUtil.readTextFile(publicFilePathRoot + fileName);
+                if (result == null) {
+                    throw new LoadFileException("public file \"" + fileName + "\" doesn't exist");
+                }
+                return result.getBytes();
+
+            } else {
+
+                byte[] loadedBytes = FileUtil.readByteFile(publicFilePathRoot + fileName);
+                if (loadedBytes == null) {
+                    throw new LoadFileException("public file \"" + fileName + "\" doesn't exist");
+                }
+                return loadedBytes;
+
             }
-            return result.getBytes();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FilePathException fpe) {
+            fpe.printStackTrace();
+            throw new LoadFileException("public file \"" + fileName + "\" has wrong extension");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
             throw new LoadFileException("can't load public file \"" + fileName + "\"");
         }
     }

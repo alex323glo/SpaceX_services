@@ -10,7 +10,7 @@ import java.io.*;
  */
 public class FileUtil {
 
-    public static final int DEFAULT_BYTE_FILE_SIZE = 1024;
+    public static final int DEFAULT_BYTE_FILE_SIZE = 1024 * 1024;   // 1 MB
 
     /**
      * Reads byte file.
