@@ -2,53 +2,51 @@ package com.alex323glo.spacex;
 
 import com.alex323glo.spacex.config.ConfigHolder;
 import com.alex323glo.spacex.config.ObjectHolder;
+import com.alex323glo.spacex.controller.MainController;
+import com.alex323glo.spacex.controller.MainControllerImpl;
+import com.alex323glo.spacex.dao.AccessTokenDao;
+import com.alex323glo.spacex.dao.UserDao;
+import com.alex323glo.spacex.exception.ArgumentValidationException;
 import com.alex323glo.spacex.rest.JettyServer;
 import com.alex323glo.spacex.rest.SpaceXServer;
 
 import java.io.IOException;
 
-// TODO add doc
 /**
- * Created by alex323glo on 27.10.17.
+ * Main class with execution entry point (main() method).
+ *
+ * @author alex323glo
+ * @version 1.0.0
  */
 public class Run {
 
     private static ObjectHolder objectHolder;
     private static ConfigHolder configHolder;
+    private static MainController mainController;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        if (!prepareBeforeRun()) {
-            System.out.println("Can't prepare before main() run!");
-            return;
-        }
+        prepareBeforeRun();     // throws ArgumentValidationException !
 
         SpaceXServer spaceXServer = new JettyServer(
-                Integer.valueOf(configHolder.getProperty("app.port")));
+                configHolder.getProperty("app.host"),
+                Integer.valueOf(configHolder.getProperty("app.port"))
+        );                      // throws ArgumentValidationException !
 
-        try {
-            spaceXServer.start();
-        } catch (Exception e) {
-            System.out.println("Can't start server!!!");
-            e.printStackTrace();
-        }
+        spaceXServer.start();   // throws Exception !
     }
 
-    /**
-     * Run all initialisations before running main().
-     *
-     * @see ObjectHolder
-     * @see ConfigHolder
-     * */
-    private static boolean prepareBeforeRun() {
+    private static void prepareBeforeRun() throws ArgumentValidationException {
+
+        // Assign static:
         objectHolder = ObjectHolder.getInstance();
-
         configHolder = ConfigHolder.getInstance();
-        if (configHolder == null) {
-            return false;
-        }
+        mainController = MainControllerImpl.create(
+                UserDao.create(),
+                AccessTokenDao.create());   // throws ArgumentValidationException !
 
-        return true;
+        // Load objects to ObjectHolder:
+        objectHolder.putObject("mainController", mainController);
     }
 
 }
