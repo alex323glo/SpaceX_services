@@ -275,13 +275,31 @@ public class MainControllerImpl implements MainController {
         String privateFilePathRoot = ConfigHolder.getInstance().getProperty("app.global.private");
 
         try {
-            String result = FileUtil.readTextFile(privateFilePathRoot + fileName);
-            if (result == null) {
-                throw new LoadFileException("private file \"" + fileName + "\" doesn't exist");
+            // Checks file type:
+            String fileType = PathUtil.getFileContentType(fileName);
+            if (fileType.equals("text/html") || fileType.equals("text/html;charset=UTF-8")
+                    || fileType.equals("text/css") || fileType.equals("script")) {
+
+                String result = FileUtil.readTextFile(privateFilePathRoot + fileName);
+                if (result == null) {
+                    throw new LoadFileException("public file \"" + fileName + "\" doesn't exist");
+                }
+                return result.getBytes();
+
+            } else {
+
+                byte[] loadedBytes = FileUtil.readByteFile(privateFilePathRoot + fileName);
+                if (loadedBytes == null) {
+                    throw new LoadFileException("public file \"" + fileName + "\" doesn't exist");
+                }
+                return loadedBytes;
+
             }
-            return result.getBytes();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FilePathException fpe) {
+            fpe.printStackTrace();
+            throw new LoadFileException("private file \"" + fileName + "\" has wrong extension");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
             throw new LoadFileException("can't load private file \"" + fileName + "\"");
         }
     }
