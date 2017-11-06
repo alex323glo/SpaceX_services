@@ -191,7 +191,6 @@ public class MainControllerImpl implements MainController {
         }
     }
 
-    // TODO finish implementation loadPublicFile()
     /**
      * Creates a byte array of needed public file from system's resources.
      *
@@ -214,14 +213,17 @@ public class MainControllerImpl implements MainController {
         String publicFilePathRoot = ConfigHolder.getInstance().getProperty("app.global.public");
 
         try {
-            return FileUtil.readByteFile(publicFilePathRoot + fileName);
+            String result = FileUtil.readTextFile(publicFilePathRoot + fileName);
+            if (result == null) {
+                throw new LoadFileException("public file \"" + fileName + "\" doesn't exist");
+            }
+            return result.getBytes();
         } catch (IOException e) {
             e.printStackTrace();
             throw new LoadFileException("can't load public file \"" + fileName + "\"");
         }
     }
 
-    // TODO finish implementation loadPrivateFile()
     /**
      * Creates a byte array of needed private file from system's resources.
      *
@@ -254,7 +256,11 @@ public class MainControllerImpl implements MainController {
         String privateFilePathRoot = ConfigHolder.getInstance().getProperty("app.global.private");
 
         try {
-            return FileUtil.readByteFile(privateFilePathRoot + fileName);
+            String result = FileUtil.readTextFile(privateFilePathRoot + fileName);
+            if (result == null) {
+                throw new LoadFileException("private file \"" + fileName + "\" doesn't exist");
+            }
+            return result.getBytes();
         } catch (IOException e) {
             e.printStackTrace();
             throw new LoadFileException("can't load private file \"" + fileName + "\"");

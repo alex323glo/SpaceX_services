@@ -13,7 +13,6 @@ import org.junit.*;
 import org.mockito.Mockito;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,15 +26,13 @@ public class TestMainController {
 
     private static final String TEST_PUBLIC_FILE_NAME = "test_public_file.test";
     private static final String TEST_PUBLIC_FILE_PATH =
-            "build/classes/main/" + ConfigHolder.getInstance().getProperty("app.global.public") + TEST_PUBLIC_FILE_NAME;
+            ConfigHolder.getInstance().getProperty("app.global.public") + TEST_PUBLIC_FILE_NAME;
 
     private static final String TEST_PRIVATE_FILE_NAME = "test_private_file.test";
     private static final String TEST_PRIVATE_FILE_PATH =
-            "build/classes/main/" + ConfigHolder.getInstance().getProperty("app.global.private") + TEST_PRIVATE_FILE_NAME;
+            ConfigHolder.getInstance().getProperty("app.global.private") + TEST_PRIVATE_FILE_NAME;
 
     private static final byte[] testByteArray = {1, 2, 3, 4, 5};
-
-    private static String[] accessTokenDaoKeys;
 
     private static MainController mainController;
 
@@ -43,18 +40,14 @@ public class TestMainController {
             .email("email")
             .password("password")
             .userInfoMap(new HashMap<>())
-            .build();;
+            .build();
 
     private static AccessToken testAccessToken = new AccessToken("111", testCorrectUser.getEmail());
 
     @BeforeClass
     public static void prepareClass() throws ArgumentValidationException, DAOException {
 
-        accessTokenDaoKeys = new String[]{"111"};
-//        userDaoRecords = new User[]{
-//                new User(userDaoKeys[0], "a"),
-//                new User(userDaoKeys[1], "b")
-//        };
+        String[] accessTokenDaoKeys = new String[]{"a1-b2-c3"};
 
         Dao<User> userDao = Mockito.mock(UserDao.class);
         Mockito.when(userDao.create(Mockito.any())).thenReturn(true);
@@ -72,15 +65,12 @@ public class TestMainController {
 
     @Before
     public void prepare() {
-        // Prepare mainController:
-        // TODO finish @Before for mainController with Mockito
-
-        // Prepare testCorrectUser:
         testCorrectUser = new UserBuilder()
                 .email("email")
                 .password("password")
                 .userInfoMap(new HashMap<>())
                 .build();
+
         testAccessToken = new AccessToken("111", testCorrectUser.getEmail());
     }
 
@@ -141,7 +131,6 @@ public class TestMainController {
         mainController.getAccessTokenTarget(null);
     }
 
-    // TODO finish test restrictUserAccess()
     @Test
     public void restrictUserAccess()
             throws DaoRecordNotFoundException, ArgumentValidationException {
@@ -161,8 +150,6 @@ public class TestMainController {
         mainController.restrictUserAccess(null);
     }
 
-    // TODO finish loadPublicFile
-    @Ignore
     @Test
     public void loadPublicFile() throws IOException, ArgumentValidationException, LoadFileException {
 
@@ -174,9 +161,7 @@ public class TestMainController {
         deleteTestFile(TEST_PUBLIC_FILE_PATH);
     }
 
-    // TODO finish loadNonExistingPublicFile()
-    @Ignore
-    @Test(/*expected = LoadFileException.class*/)
+    @Test(expected = LoadFileException.class)
     public void loadNonExistingPublicFile() throws IOException, ArgumentValidationException, LoadFileException {
         mainController.loadPublicFile(TEST_PUBLIC_FILE_NAME);
     }
@@ -186,8 +171,6 @@ public class TestMainController {
         mainController.loadPublicFile(null);
     }
 
-    // TODO finish loadPrivateFile()
-    @Ignore
     @Test
     public void loadPrivateFile()
             throws IOException, DAOException, ArgumentValidationException, LoadFileException, TokenNotExistsException {
@@ -205,19 +188,14 @@ public class TestMainController {
 
         prepareTestFile(TEST_PRIVATE_FILE_PATH, testByteArray);
 
-        mainController.loadPrivateFile(TEST_PRIVATE_FILE_NAME, "...");
+        mainController.loadPrivateFile(TEST_PRIVATE_FILE_NAME, "wrong_access_token");
 
         deleteTestFile(TEST_PRIVATE_FILE_PATH);
     }
 
-    // TODO finish loadNonExistingPrivateFile()
-    @Ignore
-    @Test(/*expected = LoadFileException.class*/)
+    @Test(expected = LoadFileException.class)
     public void loadNonExistingPrivateFile()
             throws IOException, DAOException, ArgumentValidationException, LoadFileException, TokenNotExistsException {
-        // Prepare accessToken:
-//        mainController.addUser(testCorrectUser);
-//        String testAccessToken = mainController.verifyUserAccess(testCorrectUser);
 
         mainController.loadPrivateFile(TEST_PRIVATE_FILE_NAME, testAccessToken.getToken());
     }
@@ -227,6 +205,8 @@ public class TestMainController {
             throws IOException, ArgumentValidationException, LoadFileException, TokenNotExistsException {
         mainController.loadPrivateFile(null, null);
     }
+
+
 
     // Test preparation private methods:
 
