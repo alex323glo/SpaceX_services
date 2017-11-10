@@ -218,7 +218,9 @@ public class UserDaoJSON implements Dao<User> {
 
         if (!rootDir.exists() || !rootDir.isDirectory()) {
             if (rootDir.mkdirs()) {
-                LogUtil.printMessage(userDaoJSON, "Successfully created a DB root directories chain.");
+                LogUtil.printMessage(userDaoJSON,
+                        "Successfully created a DB root directories chain ("
+                                + rootDir.getAbsolutePath() + ").");
             } else {
                 LogUtil.printMessage(userDaoJSON, "Can't create a DB root directories chain.");
             }
@@ -237,10 +239,11 @@ public class UserDaoJSON implements Dao<User> {
         LogUtil.printMessage(userDaoJSON, "Root directory contains:");
         Arrays.stream(dbFiles).forEach(file -> System.out.println("\t\t" + file.getName()));
 
-
         for (File dbFile: dbFiles) {
             User tempUser = JSONUtil.fromFile(dbFile.getPath(), User.class);
             if (tempUser == null) {
+                LogUtil.printMessage(userDaoJSON,
+                        "Failed to read file \"" + dbFile.getName() + "\" It is not a JSON DB record!");
                 continue;
             }
             userMap.put(tempUser.getEmail(), tempUser);

@@ -3,7 +3,7 @@ import com.alex323glo.spacex.controller.MainController;
 import com.alex323glo.spacex.controller.MainControllerImpl;
 import com.alex323glo.spacex.dao.AccessTokenDao;
 import com.alex323glo.spacex.dao.Dao;
-import com.alex323glo.spacex.dao.UserDao;
+import com.alex323glo.spacex.dao.UserDaoJSON;
 import com.alex323glo.spacex.exception.*;
 import com.alex323glo.spacex.model.user.AccessToken;
 import com.alex323glo.spacex.model.user.User;
@@ -49,7 +49,7 @@ public class TestMainController {
 
         String[] accessTokenDaoKeys = new String[]{"a1-b2-c3"};
 
-        Dao<User> userDao = Mockito.mock(UserDao.class);
+        Dao<User> userDao = Mockito.mock(UserDaoJSON.class);
         Mockito.when(userDao.create(Mockito.any())).thenReturn(true);
         Mockito.when(userDao.read(testCorrectUser.getEmail())).thenReturn(testCorrectUser);
 

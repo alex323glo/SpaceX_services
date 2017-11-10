@@ -5,8 +5,9 @@ import com.alex323glo.spacex.config.ObjectHolder;
 import com.alex323glo.spacex.controller.MainController;
 import com.alex323glo.spacex.controller.MainControllerImpl;
 import com.alex323glo.spacex.dao.AccessTokenDao;
-import com.alex323glo.spacex.dao.UserDao;
+import com.alex323glo.spacex.dao.UserDaoJSON;
 import com.alex323glo.spacex.exception.ArgumentValidationException;
+import com.alex323glo.spacex.exception.DAOException;
 import com.alex323glo.spacex.rest.JettyServer;
 import com.alex323glo.spacex.rest.SpaceXServer;
 
@@ -36,13 +37,13 @@ public class Run {
         spaceXServer.start();   // throws Exception !
     }
 
-    private static void prepareBeforeRun() throws ArgumentValidationException {
+    private static void prepareBeforeRun() throws ArgumentValidationException, DAOException {
 
         // Assign static:
         objectHolder = ObjectHolder.getInstance();
         configHolder = ConfigHolder.getInstance();
         mainController = MainControllerImpl.create(
-                UserDao.create(),
+                UserDaoJSON.createInstance(ConfigHolder.getInstance().getProperty("app.db.json")),
                 AccessTokenDao.create());   // throws ArgumentValidationException !
 
         // Load objects to ObjectHolder:

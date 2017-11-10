@@ -1,5 +1,6 @@
 package com.alex323glo.spacex.model.user;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -44,16 +45,20 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder info(InfoType type, UserInfo info) {
-        if (type == null || info == null) {
+    public UserBuilder info(UserInfo info) {
+        if (info == null || info.getType() == null) {
             throw new NullPointerException("type or info is null");
         }
-        target.getUserInfoMap().put(type, info);
+        target.getUserInfoMap().put(info.getType(), info);
 
         return this;
     }
 
     public User build() {
+        User newUser = new User();
+        newUser.setEmail(new String(target.getEmail()));
+        newUser.setPassword(new String(target.getPassword()));
+        newUser.setUserInfoMap(new HashMap<>(target.getUserInfoMap()));
         return target;
     }
 }
