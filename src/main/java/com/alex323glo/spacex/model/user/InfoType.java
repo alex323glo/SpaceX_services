@@ -7,7 +7,7 @@ package com.alex323glo.spacex.model.user;
  * @version 1.0.0
  * @see UserInfo
  * */
-public enum UserInfoType {
+public enum InfoType {
     USERNAME,
     PHONE
 }

@@ -1,52 +1,65 @@
 package com.alex323glo.spacex.model.user;
 
 /**
- * General interface for part of User Information.
+ * Part of User Information.
  *
  * @author alex323glo
  * @version 1.0.0
  * @see User
- * @see UserInfoType
+ * @see InfoType
  * */
-public abstract class UserInfo {
+public class UserInfo {
 
-    protected UserInfoType userInfoType;
+    private InfoType infoType;
+    private String value;
+
+    public UserInfo() {
+    }
+
+    public UserInfo(InfoType infoType, String value) {
+        this.infoType = infoType;
+        this.value = value;
+    }
 
     /**
      * Getter for user info value.
      *
      * @return String user info.
      * */
-    public abstract String getInfo();
+    public String getInfo() {
+        return value;
+    }
 
     /**
      * Setter for user info value.
      *
-     * @param info initial value.
+     * @param value initial value.
      * */
-    public abstract void setInfo(String info);
+    public void setInfo(String value) {
+        this.value = value;
+    }
 
     /**
      * Getter for info type.
      *
      * @return type of current user info part.
-     * @see UserInfoType
+     * @see InfoType
      * */
-    public UserInfoType getType() {
-        return userInfoType;
+    public InfoType getType() {
+        return infoType;
     }
 
     /**
      * Setter for info type.
      *
-     * @param userInfoType initial value.
-     * @see UserInfoType
+     * @param infoType initial value.
+     * @see InfoType
      * */
-    public void setType(UserInfoType userInfoType) {
-        if (userInfoType == null) {
+    public void setType(InfoType infoType) {
+        if (infoType == null) {
             throw new NullPointerException("infoType is null");
         }
-        this.userInfoType = userInfoType;
+        this.infoType = infoType;
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.Map;
 public class User {
     private String email;
     private String password;
-    private Map<UserInfoType, UserInfo> userInfoMap;
+    private Map<InfoType, UserInfo> userInfoMap;
 
     public User() {
         userInfoMap = new HashMap<>();
@@ -40,12 +40,20 @@ public class User {
         this.password = password;
     }
 
-    public Map<UserInfoType, UserInfo> getUserInfoMap() {
+    public Map<InfoType, UserInfo> getUserInfoMap() {
         return userInfoMap;
     }
 
-    public void setUserInfoMap(Map<UserInfoType, UserInfo> userInfoMap) {
+    public void setUserInfoMap(Map<InfoType, UserInfo> userInfoMap) {
         this.userInfoMap = userInfoMap;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     @Override

@@ -35,11 +35,20 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder userInfoMap(Map<UserInfoType, UserInfo> userInfoMap) {
+    public UserBuilder userInfoMap(Map<InfoType, UserInfo> userInfoMap) {
         if (userInfoMap == null) {
             throw new NullPointerException("userInfoMap is null");
         }
         target.setUserInfoMap(userInfoMap);
+
+        return this;
+    }
+
+    public UserBuilder info(InfoType type, UserInfo info) {
+        if (type == null || info == null) {
+            throw new NullPointerException("type or info is null");
+        }
+        target.getUserInfoMap().put(type, info);
 
         return this;
     }
