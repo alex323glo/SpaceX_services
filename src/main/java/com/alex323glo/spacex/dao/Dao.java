@@ -1,11 +1,9 @@
 package com.alex323glo.spacex.dao;
 
-import com.alex323glo.spacex.exception.DAOException;
-import com.alex323glo.spacex.exception.DaoRecordNotFoundException;
-import com.alex323glo.spacex.exception.DaoRecordOverrideException;
 import com.alex323glo.spacex.model.user.User;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -20,7 +18,51 @@ import java.util.Set;
  * @see Model
  * @see User
  * */
-public interface Dao<Model> {
+public abstract class Dao<Model> {
+
+    protected String dbRoot;
+
+    protected Map<String, Model> recordMap;
+
+    /**
+     * Getter for dbRoot field.
+     *
+     * @return field value.
+     * */
+    public String getDbRoot() {
+        return dbRoot;
+    }
+
+    /**
+     * Setter for dbRoot field.
+     *
+     * @param dbRoot initial field value.
+     * */
+    public void setDbRoot(String dbRoot) {
+        this.dbRoot = dbRoot;
+    }
+
+    /**
+     * Getter for recordMap field.
+     *
+     * @return field value.
+     *
+     * @see Map
+     * */
+    public Map<String, Model> getRecordMap() {
+        return recordMap;
+    }
+
+    /**
+     * Setter for recordMap field.
+     *
+     * @param recordMap initial field value.
+     *
+     * @see Map
+     * */
+    public void setRecordMap(Map<String, Model> recordMap) {
+        this.recordMap = recordMap;
+    }
 
     /**
      * Creates a record in system's DB.
@@ -30,7 +72,7 @@ public interface Dao<Model> {
      *
      * @see Model
      * */
-    boolean create(Model data);
+    public abstract boolean create(Model data);
 
     /**
      * Reads record from system's DB.
@@ -40,7 +82,7 @@ public interface Dao<Model> {
      *
      * @see Model
      * */
-    Model read(String id);
+    public abstract Model read(String id);
 
     /**
      * Updates record in system's DB.
@@ -53,7 +95,7 @@ public interface Dao<Model> {
      *
      * @see Model
      * */
-    Model update(String id, Model newData);
+    public abstract Model update(String id, Model newData);
 
     /**
      * Removes record from system's DB.
@@ -63,7 +105,7 @@ public interface Dao<Model> {
      *
      * @see Model
      * */
-    Model delete(String id);
+    public abstract Model delete(String id);
 
     /**
      * Gives Set of all keys of table from system's DB.
@@ -72,7 +114,7 @@ public interface Dao<Model> {
      *
      * @see Set
      * */
-    Set<String> allKeys();
+    public abstract Set<String> allKeys();
 
     /**
      * Gives List of all records of table from system's DB.
@@ -82,5 +124,5 @@ public interface Dao<Model> {
      * @see Model
      * @see List
      * */
-    List<Model> allRecords();
+    public abstract List<Model> allRecords();
 }
