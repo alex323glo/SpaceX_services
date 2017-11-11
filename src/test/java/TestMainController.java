@@ -1,7 +1,7 @@
 import com.alex323glo.spacex.config.ConfigHolder;
 import com.alex323glo.spacex.controller.MainController;
 import com.alex323glo.spacex.controller.MainControllerImpl;
-import com.alex323glo.spacex.dao.AccessTokenDao;
+import com.alex323glo.spacex.dao.AccessTokenDaoJSON;
 import com.alex323glo.spacex.dao.Dao;
 import com.alex323glo.spacex.dao.UserDaoJSON;
 import com.alex323glo.spacex.exception.*;
@@ -53,7 +53,7 @@ public class TestMainController {
         Mockito.when(userDao.create(Mockito.any())).thenReturn(true);
         Mockito.when(userDao.read(testCorrectUser.getEmail())).thenReturn(testCorrectUser);
 
-        Dao<AccessToken> accessTokenDao = Mockito.mock(AccessTokenDao.class);
+        Dao<AccessToken> accessTokenDao = Mockito.mock(AccessTokenDaoJSON.class);
         Mockito.when(accessTokenDao.allKeys()).thenReturn(new HashSet<>(Arrays.asList(accessTokenDaoKeys)));
         Mockito.when(accessTokenDao.create(Mockito.any())).thenReturn(true);
         Mockito.when(accessTokenDao.read(testAccessToken.getToken())).thenReturn(testAccessToken);

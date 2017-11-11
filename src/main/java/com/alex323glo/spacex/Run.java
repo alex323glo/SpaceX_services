@@ -4,14 +4,12 @@ import com.alex323glo.spacex.config.ConfigHolder;
 import com.alex323glo.spacex.config.ObjectHolder;
 import com.alex323glo.spacex.controller.MainController;
 import com.alex323glo.spacex.controller.MainControllerImpl;
-import com.alex323glo.spacex.dao.AccessTokenDao;
+import com.alex323glo.spacex.dao.AccessTokenDaoJSON;
 import com.alex323glo.spacex.dao.UserDaoJSON;
 import com.alex323glo.spacex.exception.ArgumentValidationException;
 import com.alex323glo.spacex.exception.DAOException;
 import com.alex323glo.spacex.rest.JettyServer;
 import com.alex323glo.spacex.rest.SpaceXServer;
-
-import java.io.IOException;
 
 /**
  * Main class with execution entry point (main() method).
@@ -43,8 +41,8 @@ public class Run {
         objectHolder = ObjectHolder.getInstance();
         configHolder = ConfigHolder.getInstance();
         mainController = MainControllerImpl.create(
-                UserDaoJSON.createInstance(ConfigHolder.getInstance().getProperty("app.db.json")),
-                AccessTokenDao.create());   // throws ArgumentValidationException !
+                UserDaoJSON.createInstance(ConfigHolder.getInstance().getProperty("app.db.user.json")),
+                AccessTokenDaoJSON.createInstance(ConfigHolder.getInstance().getProperty("app.db.access_token.json")));
 
         // Load objects to ObjectHolder:
         objectHolder.putObject("mainController", mainController);

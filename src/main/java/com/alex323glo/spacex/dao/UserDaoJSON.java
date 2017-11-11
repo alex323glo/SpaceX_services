@@ -17,11 +17,7 @@ import java.util.*;
  * @see Dao
  * @see User
  * */
-public class UserDaoJSON implements Dao<User> {
-
-    private String dbRoot;
-
-    private Map<String, User> recordMap;
+public class UserDaoJSON extends Dao<User> {
 
     /**
      * Private constructor. Instead use createInstance() method.
@@ -33,34 +29,6 @@ public class UserDaoJSON implements Dao<User> {
     private UserDaoJSON(String dbRoot) {
         this.dbRoot = dbRoot;
         recordMap = new HashMap<>();
-    }
-
-    /**
-     * TODO doc.
-     * */
-    public String getDbRoot() {
-        return dbRoot;
-    }
-
-    /**
-     * TODO doc.
-     * */
-    public void setDbRoot(String dbRoot) {
-        this.dbRoot = dbRoot;
-    }
-
-    /**
-     * TODO doc.
-     * */
-    public Map<String, User> getRecordMap() {
-        return recordMap;
-    }
-
-    /**
-     * TODO doc.
-     * */
-    public void setRecordMap(Map<String, User> recordMap) {
-        this.recordMap = recordMap;
     }
 
     /**
@@ -76,8 +44,6 @@ public class UserDaoJSON implements Dao<User> {
             return false;
         }
 
-        recordMap.put(data.getEmail(), data);
-
         try {
             JSONUtil.toFile(dbRoot + "/" + data.getEmail() + ".json", data, data.getClass());
         } catch (IOException e) {
@@ -85,6 +51,8 @@ public class UserDaoJSON implements Dao<User> {
             e.printStackTrace();
             return false;
         }
+
+        recordMap.put(data.getEmail(), data);
 
         LogUtil.printMessage(this, "Was saved data \"" + data + "\" to JSON file.");
         return true;
