@@ -164,6 +164,8 @@ public class AccessTokenDaoJSON extends Dao<AccessToken> {
     /**
      * Creates an instance of AccessTokenDaoJSON.
      *
+     * @param dbRoot root path of Data Base.
+     *
      * @return new instance.
      * */
     public static AccessTokenDaoJSON createInstance(String dbRoot) {

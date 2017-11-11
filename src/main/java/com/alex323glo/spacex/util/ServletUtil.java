@@ -21,7 +21,7 @@ public class ServletUtil {
      *
      * @param response HttpServletResponse, which will be sent by Servlet.
      * @param responseStatus HTTP Response status code, which will be set to response.
-     *
+     * @param responseMessage text of message.
      *
      * @see HttpServletResponse
      * */
