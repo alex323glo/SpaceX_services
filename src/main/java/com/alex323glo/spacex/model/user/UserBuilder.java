@@ -12,17 +12,19 @@ import java.util.Map;
  */
 public class UserBuilder {
 
-    private User target;
+    private String targetEmail;
+    private String targetPassword;
+    private Map<InfoType, UserInfo> targetUserInfoMap;
 
     public UserBuilder() {
-        target = new User();
+        targetUserInfoMap = new HashMap<>();
     }
 
     public UserBuilder email(String email) {
         if (email == null) {
             throw new NullPointerException("email is null");
         }
-        target.setEmail(email);
+        targetEmail = email;
 
         return this;
     }
@@ -31,7 +33,7 @@ public class UserBuilder {
         if (password == null) {
             throw new NullPointerException("password is null");
         }
-        target.setPassword(password);
+        targetPassword = password;
 
         return this;
     }
@@ -40,7 +42,7 @@ public class UserBuilder {
         if (userInfoMap == null) {
             throw new NullPointerException("userInfoMap is null");
         }
-        target.setUserInfoMap(userInfoMap);
+        targetUserInfoMap = userInfoMap;
 
         return this;
     }
@@ -49,16 +51,16 @@ public class UserBuilder {
         if (info == null || info.getType() == null) {
             throw new NullPointerException("type or info is null");
         }
-        target.getUserInfoMap().put(info.getType(), info);
+        targetUserInfoMap.put(info.getType(), info);
 
         return this;
     }
 
     public User build() {
         User newUser = new User();
-        newUser.setEmail(new String(target.getEmail()));
-        newUser.setPassword(new String(target.getPassword()));
-        newUser.setUserInfoMap(new HashMap<>(target.getUserInfoMap()));
-        return target;
+        newUser.setEmail(targetEmail == null ? null : new String(targetEmail));
+        newUser.setPassword(targetPassword == null ? null : new String(targetPassword));
+        newUser.setUserInfoMap(new HashMap<>(targetUserInfoMap));
+        return newUser;
     }
 }

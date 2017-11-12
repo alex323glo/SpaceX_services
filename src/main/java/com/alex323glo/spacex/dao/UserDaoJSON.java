@@ -1,6 +1,5 @@
 package com.alex323glo.spacex.dao;
 
-import com.alex323glo.spacex.exception.DAOException;
 import com.alex323glo.spacex.model.user.User;
 import com.alex323glo.spacex.util.JSONUtil;
 import com.alex323glo.spacex.util.LogUtil;
@@ -167,11 +166,10 @@ public class UserDaoJSON extends Dao<User> {
      * @param dbRoot root path of Data Base.
      *
      * @throws NullPointerException if dbRoot is null.
-     * @throws DAOException when dbRoot is wrong (no existing directory with such root).
      *
      * @return new instance.
      * */
-    public static UserDaoJSON createInstance(String dbRoot) throws DAOException {
+    public static UserDaoJSON createInstance(String dbRoot) {
 
         if (dbRoot == null) {
             throw new NullPointerException("dbRoot is null");

@@ -62,4 +62,21 @@ public class UserInfo {
         this.infoType = infoType;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserInfo info = (UserInfo) o;
+
+        if (infoType != info.infoType) return false;
+        return value != null ? value.equals(info.value) : info.value == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = infoType != null ? infoType.hashCode() : 0;
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        return result;
+    }
 }
